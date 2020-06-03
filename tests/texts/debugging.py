@@ -1,0 +1,7 @@
+debugging_test_text_001 = 'import bla'
+debugging_test_text_002 = 'import pdb'
+debugging_test_text_003 = 'import ipdb'
+debugging_test_text_004 = 'import pudb'
+debugging_test_text_005 = 'pdb = 10'
+debugging_test_text_006 = 'breakpoint()'
+debugging_test_text_007 = 'breakpoint = 0'
