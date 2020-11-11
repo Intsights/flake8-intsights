@@ -43,6 +43,10 @@ class Checker(
         if isinstance(node.parent, astroid.ClassDef):
             function_is_classmethod = False
             function_is_staticmethod = False
+
+            if node.name == '__new__':
+                function_is_classmethod = True
+
             for decorator_name in node.decoratornames():
                 if decorator_name == 'builtins.classmethod':
                     function_is_classmethod = True

@@ -44,13 +44,13 @@ class NamingTestCase(
     def test_case_1(
         self,
     ):
-        self.assertEqual(
+        self.assertCountEqual(
             first=self.get_linting_errors(
                 source_code=texts.naming.naming_test_text_001,
             ),
             second=[
                 (
-                    58,
+                    65,
                     18,
                     'I097 function arguments should be lower case',
                     'intsights_checker',

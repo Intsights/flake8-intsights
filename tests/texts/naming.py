@@ -56,6 +56,13 @@ class Test:
     def method_12(self):
         pass
 
+    def __new__(
+        cls,
+        *args,
+        **kwargs
+    ):
+        pass
+
 def function_five(Argumemnt):
     pass
 '''
