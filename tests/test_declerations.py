@@ -1347,3 +1347,13 @@ class DeclerationsTestCase(
             ),
             second=[],
         )
+
+    def test_case_108(
+        self,
+    ):
+        self.assertEqual(
+            first=self.get_linting_errors(
+                source_code=texts.declerations.declerations_test_text_108,
+            ),
+            second=[],
+        )

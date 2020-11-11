@@ -744,3 +744,15 @@ class Class:
     async def function():
         pass
 '''
+declerations_test_text_108 = '''
+list_a = [
+    \'\'\'
+    multiline
+    string
+    \'\'\',
+    \'\'\'
+    multiline
+    string
+    \'\'\',
+]
+'''

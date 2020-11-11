@@ -1,4 +1,5 @@
 import astroid
+import tokenize
 
 from . import _checker
 
@@ -297,7 +298,16 @@ class Checker(
                             column_offset=list_entry_node.col_offset,
                         )
 
-                list_entry_line = lines[list_entry_node.lineno - 1]
+                list_entry_token = cls.get_token_by_position(
+                    lineno=list_entry_node.lineno,
+                    col_offset=list_entry_node.col_offset,
+                    tokens=tokens,
+                )
+                if list_entry_token.type == tokenize.STRING:
+                    list_entry_line = lines[list_entry_token.end[0] - 1]
+                else:
+                    list_entry_line = lines[list_entry_node.lineno - 1]
+
                 if list_entry_line.strip() in cls.OPENERS:
                     list_closer_token = cls.get_node_closer_token(
                         node=list_entry_node,
