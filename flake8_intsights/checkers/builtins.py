@@ -86,6 +86,9 @@ class Checker(
         cls,
         node,
     ):
+        if isinstance(node.parent, ast.ClassDef):
+            return
+
         stack = list(node.targets)
         while stack:
             item = stack.pop()
@@ -109,7 +112,7 @@ class Checker(
         cls,
         node,
     ):
-        if node.name in cls.BUILTINS:
+        if node.name in cls.BUILTINS and not isinstance(node.parent, ast.ClassDef):
             yield from cls.error_yielder.yield_error(
                 error_id='I091',
                 line_number=node.lineno,

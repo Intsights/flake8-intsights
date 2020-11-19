@@ -1,3 +1,4 @@
+import ast
 import astroid
 import flake8
 
@@ -20,7 +21,6 @@ class Checker:
         self.source_code = ''.join(lines)
         self.filename = filename
         self.lines = self.source_code.split('\n')
-        self.ast_tree = tree
         self.tokens = file_tokens
         self.start_position_to_token = {
             token.start: {
@@ -29,6 +29,11 @@ class Checker:
             }
             for index, token in enumerate(self.tokens, 0)
         }
+
+        self.ast_tree = tree
+        for node in ast.walk(self.ast_tree):
+            for child in ast.iter_child_nodes(node):
+                child.parent = node
 
         self.astroid_tree = self.astroid_builder.string_build(
             data=self.source_code,

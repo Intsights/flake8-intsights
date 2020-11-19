@@ -100,4 +100,17 @@ class ClassName:
 
 class dict:
     pass
+
+class SomeClass:
+    type = 'some'
+
+    def method(
+        self,
+    ):
+        pass
+
+    def filter(
+        self,
+    ):
+        pass
 '''
