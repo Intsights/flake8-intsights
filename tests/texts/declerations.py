@@ -756,3 +756,8 @@ list_a = [
     \'\'\',
 ]
 '''
+declerations_test_text_109 = '''
+list_with_empty_tuple = [
+    (),
+]
+'''

@@ -235,13 +235,14 @@ class Checker(
         for list_entry_node in node.elts:
             if type(list_entry_node) in cls.LIST_TYPES:
                 if isinstance(list_entry_node, astroid.Tuple):
-                    list_entry_previous_line = lines[list_entry_node.elts[0].lineno - 2]
-                    if list_entry_previous_line.strip() != '(':
-                        yield from cls.error_yielder.yield_error(
-                            error_id='I045',
-                            line_number=list_entry_node.lineno,
-                            column_offset=node.col_offset,
-                        )
+                    if list_entry_node.elts:
+                        list_entry_previous_line = lines[list_entry_node.elts[0].lineno - 2]
+                        if list_entry_previous_line.strip() != '(':
+                            yield from cls.error_yielder.yield_error(
+                                error_id='I045',
+                                line_number=list_entry_node.lineno,
+                                column_offset=node.col_offset,
+                            )
                 else:
                     list_entry_line = lines[list_entry_node.lineno - 1]
                     list_entry_line = list_entry_line.strip()
