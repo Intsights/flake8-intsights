@@ -43,7 +43,8 @@ class Checker:
             node=self.astroid_tree,
         ):
             astroid_node_lineno = astroid_node.lineno if astroid_node.lineno is not None else 0
-            astroid_node_col_offset = astroid_node.col_offset if astroid_node.col_offset is not None else 0
+            astroid_node_col_offset = getattr(astroid_node, 'col_offset', 0)
+            astroid_node_col_offset = astroid_node_col_offset if astroid_node_col_offset else 0
             astroid_node.position_in_tree = astroid_node_lineno * 10000 + astroid_node_col_offset
 
             node_inside_formatted_value = False
