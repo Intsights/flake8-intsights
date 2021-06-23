@@ -1,4 +1,4 @@
-astroid
+astroid==2.5.8
 flake8
 flake8-assertive
 flake8-comprehensions
