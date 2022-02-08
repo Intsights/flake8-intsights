@@ -6,27 +6,27 @@ from . import _errors
 
 
 class BaseChecker:
-    LIST_TYPES = [
+    LIST_TYPES = {
         astroid.List,
         astroid.Tuple,
         astroid.Set,
-    ]
-    LATE_OPENERS_TYPES = [
+    }
+    LATE_OPENERS_TYPES = {
         astroid.Call,
-    ]
-    LATE_CLOSERS_TYPES = [
+    }
+    LATE_CLOSERS_TYPES = {
         astroid.Tuple,
-    ]
-    OPENERS = [
+    }
+    OPENERS = {
         '[',
         '(',
         '{',
-    ]
-    CLOSERES = [
+    }
+    CLOSERES = {
         ']',
         ')',
         '}',
-    ]
+    }
 
     error_yielder = _errors.ErrorYielder
 
@@ -176,12 +176,13 @@ class BaseChecker:
     ):
         for token in tokens:
             token_start_lineno = token.start[0]
-            token_start_col_offset = token.start[1]
             token_end_lineno = token.end[0]
-            token_end_col_offset = token.end[1]
-
             same_lines = token_start_lineno <= lineno and lineno <= token_end_lineno
+            if not same_lines:
+                continue
 
+            token_start_col_offset = token.start[1]
+            token_end_col_offset = token.end[1]
             same_cols = True
             if token_start_lineno == lineno:
                 if token_start_col_offset > col_offset:
@@ -191,7 +192,7 @@ class BaseChecker:
                 if token_end_col_offset < col_offset:
                     same_cols = False
 
-            if same_lines and same_cols:
+            if same_cols:
                 return token
 
         return None
@@ -266,11 +267,11 @@ class BaseChecker:
 
         current_nesting_counter = 0
         for token in tokens[current_open_token_index:]:
-            if token.type == tokenize.OP and token.string in cls.OPENERS:
-                current_nesting_counter += 1
-
-            if token.type == tokenize.OP and token.string in cls.CLOSERES:
-                current_nesting_counter -= 1
+            if token.type == tokenize.OP:
+                if token.string in cls.OPENERS:
+                    current_nesting_counter += 1
+                elif token.string in cls.CLOSERES:
+                    current_nesting_counter -= 1
 
             if current_nesting_counter == 0:
                 return token
