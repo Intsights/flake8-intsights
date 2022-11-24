@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='flake8-intsights',
-    version='0.2.0',
+    version='0.3.0',
     author='Gal Ben David',
     author_email='gal@intsights.com',
     url='https://github.com/Intsights/flake8-intsights',
@@ -20,6 +20,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
     ],
     keywords='flake8 conventions style lint linter intsights',
     python_requires='>=3.7',

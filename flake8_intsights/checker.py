@@ -1,6 +1,6 @@
 import ast
 import astroid
-import flake8
+import astroid.builder
 
 from . import checkers
 
@@ -77,36 +77,11 @@ class Checker:
             )
 
     @classmethod
-    def add_options(
-        cls,
-        parser,
-    ):
-        pass
-
-    @classmethod
     def parse_options(
         cls,
         options,
     ):
-        original_report = flake8.checker.Manager.report
-
-        def patched_report(
-            self,
-        ):
-            for checker in self.checkers:
-                if checker.filename == '__init__.py' or checker.filename.endswith('/__init__.py'):
-                    filtered_results = []
-
-                    for result in checker.results:
-                        if result[0] != 'F401':
-                            filtered_results.append(result)
-
-                    checker.results = filtered_results
-
-            results = original_report(
-                self=self,
-            )
-
-            return results
-
-        flake8.checker.Manager.report = patched_report
+        if options.per_file_ignores:
+            options.per_file_ignores += ' */__init__.py:F401'
+        else:
+            options.per_file_ignores = '*/__init__.py:F401'
