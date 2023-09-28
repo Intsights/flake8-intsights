@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='flake8-intsights',
-    version='0.3.0',
+    version='0.3.1',
     author='Gal Ben David',
     author_email='gal@intsights.com',
     url='https://github.com/Intsights/flake8-intsights',
