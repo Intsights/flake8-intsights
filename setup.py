@@ -26,7 +26,7 @@ setuptools.setup(
     python_requires='>=3.7',
     zip_safe=False,
     install_requires=[
-        'astroid',
+        'astroid==2.15.8',
         'flake8',
         'flake8-assertive',
         'flake8-comprehensions',
