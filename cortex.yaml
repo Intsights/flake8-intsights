@@ -1,0 +1,16 @@
+---
+info:
+  title: Flake8 Intsights
+  description: Uncompromising and opinionated flake8 plugin which follows Intsights'
+    practices
+  x-cortex-git:
+    github:
+      alias: intsightsorg
+      repository: Intsights/flake8-intsights
+  x-cortex-tag: flake8-intsights
+  x-cortex-type: service
+  x-cortex-domain-parents:
+  - tag: threatintel-rd
+openapi: 3.0.1
+servers:
+- url: "/"
