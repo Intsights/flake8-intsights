@@ -10,7 +10,7 @@ info:
   x-cortex-tag: flake8-intsights
   x-cortex-type: service
   x-cortex-domain-parents:
-  - tag: threatintel-rd
+  - tag: threatintel
 openapi: 3.0.1
 servers:
 - url: "/"
