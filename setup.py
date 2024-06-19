@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='flake8-intsights',
-    version='0.3.1',
+    version='0.3.2',
     author='Gal Ben David',
     author_email='gal@intsights.com',
     url='https://github.com/Intsights/flake8-intsights',
@@ -26,7 +26,7 @@ setuptools.setup(
     python_requires='>=3.7',
     zip_safe=False,
     install_requires=[
-        'astroid==2.15.8',
+        'astroid>=3.2.2',
         'flake8',
         'flake8-assertive',
         'flake8-comprehensions',
