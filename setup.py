@@ -4,8 +4,6 @@ import setuptools
 setuptools.setup(
     name='flake8-intsights',
     version='0.4.0',
-    author='Gal Ben David',
-    author_email='gal@intsights.com',
     url='https://github.com/Intsights/flake8-intsights',
     project_urls={
         'Source': 'https://github.com/Intsights/flake8-intsights',
