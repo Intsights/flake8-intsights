@@ -1,5 +1,5 @@
 astroid==2.15.8
-zipp==3.19.1
+zipp==4.1.0
 flake8
 flake8-assertive
 flake8-comprehensions
