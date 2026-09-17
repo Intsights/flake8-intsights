@@ -1,6 +1,0 @@
-version: v1.25.0
-language-settings:
-    python: "3.10"
-ignore: {}
-patch: {}
-exclude: {}
